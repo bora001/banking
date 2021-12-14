@@ -1,0 +1,97 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+img {
+  width: 100%;
+}
+/* header */
+
+#header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  line-height: 70px;
+}
+#header .logo {
+  display: flex;
+  font-size: 27px;
+  align-items: center;
+  font-weight: 700;
+}
+#header .logo img {
+  width: 70px;
+}
+
+#header .btn_box {
+  display: flex;
+  line-height: 50px;
+  width: 40%;
+  justify-content: space-between;
+}
+
+#header .btn_box .menu_list {
+  display: flex;
+}
+
+#header .btn_box .menu_list li {
+  font-weight: 500;
+  cursor: pointer;
+}
+
+#header .btn_box .open_account,
+#header .btn_box .sign_on {
+  font-size: 18px;
+  line-height: 50px;
+  padding: 0 20px;
+  border-radius: 30px;
+  color: #fff;
+  background-color: rgb(11, 197, 135);
+}
+
+#header .btn_box .sign_on {
+  background-color: rgb(73, 89, 233);
+}
+
+/* section */
+
+#section {
+  width: 80%;
+  margin: 0 auto;
+}
+#section #sec1 {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  margin: 70px 0;
+}
+#section #sec1 .txt_box {
+  position: absolute;
+  top: 45%;
+  left: 0;
+  width: 30%;
+}
+#section #sec1 .txt_box h2 {
+  width: 500px;
+  line-height: 80px;
+  text-align: center;
+  font-size: 42px;
+  background-color: #fff;
+}
+#section #sec1 .txt_box p {
+  font-size: 28px;
+  text-align: center;
+}
+#section #sec1 .img_box {
+  width: 70%;
+}
