@@ -69,11 +69,19 @@ img {
   width: 80%;
   margin: 0 auto;
 }
+
+#section #sec1,
+#section #sec2,
+#section #sec3 {
+  margin: 70px 0;
+  border: 2px solid gold;
+  position: relative;
+}
+
 #section #sec1 {
   position: relative;
   display: flex;
   justify-content: flex-end;
-  margin: 70px 0;
 }
 #section #sec1 .txt_box {
   position: absolute;
@@ -81,6 +89,7 @@ img {
   left: 0;
   width: 30%;
 }
+
 #section #sec1 .txt_box h2 {
   width: 500px;
   line-height: 80px;
@@ -96,24 +105,25 @@ img {
   width: 70%;
 }
 
-#section #sec2 .title_box {
-  margin: 250px auto 0;
+#section .title_box {
+  margin: 250px auto 50px;
   text-align: center;
   width: 100%;
+  border: 2px solid red;
 }
-#section #sec2 .title_box h2 {
+#section .title_box h2 {
   color: rgb(28, 151, 110);
   font-size: 28px;
   letter-spacing: 1px;
 }
 
-#section #sec2 .title_box h3 {
+#section .title_box h3 {
   font-weight: 500;
 }
 
 #section #sec2 .content_box {
   display: flex;
-  margin: 7% 0;
+  /* margin: 7% 0; */
 }
 #section #sec2 .content_box .txt_box {
   width: 50%;
@@ -132,4 +142,54 @@ img {
 
 #section #sec2 .content_box .img_box {
   width: 50%;
+  padding: 30px;
+}
+
+#section #sec3 .tab_cnt .tab_btns {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+#section #sec3 .tab_cnt .tab_btns .btn {
+  border-radius: 25px;
+  padding: 15px;
+  color: #fff;
+  text-shadow: 1px 1px 6px rgba(31, 29, 29, 0.747);
+  z-index: 99;
+}
+#section #sec3 .tab_cnt .tab_btns .btn01 {
+  background-color: rgb(134, 85, 212);
+}
+#section #sec3 .tab_cnt .tab_btns .btn02 {
+  background-color: rgba(47, 142, 219, 0.788);
+}
+#section #sec3 .tab_cnt .tab_btns .btn03 {
+  background-color: rgb(8, 153, 134);
+}
+
+#section #sec3 .tab_cnt .tab_box {
+  position: relative;
+  margin-bottom: 300px;
+}
+#section #sec3 .tab_cnt .tab_box .tab {
+  position: absolute;
+  padding: 50px;
+  margin-top: -30px;
+  left: 50%;
+  width: 85%;
+  transform: translate(-50%);
+  background-color: aliceblue;
+}
+
+#section #sec3 .tab_cnt .tab_box .tab h3 {
+  position: relative;
+  font-size: 22px;
+  margin: 10px 0;
+}
+
+#section #sec3 .tab_cnt .tab_box .tab p {
+  font-size: 16px;
+  color: rgb(58, 57, 57);
 }
