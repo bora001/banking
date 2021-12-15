@@ -95,3 +95,41 @@ img {
 #section #sec1 .img_box {
   width: 70%;
 }
+
+#section #sec2 .title_box {
+  margin: 250px auto 0;
+  text-align: center;
+  width: 100%;
+}
+#section #sec2 .title_box h2 {
+  color: rgb(28, 151, 110);
+  font-size: 28px;
+  letter-spacing: 1px;
+}
+
+#section #sec2 .title_box h3 {
+  font-weight: 500;
+}
+
+#section #sec2 .content_box {
+  display: flex;
+  margin: 7% 0;
+}
+#section #sec2 .content_box .txt_box {
+  width: 50%;
+  padding: 40px;
+}
+
+#section #sec2 .content_box .txt_box h3 {
+  margin-top: 35%;
+  font-size: 28px;
+}
+
+#section #sec2 .content_box .txt_box p {
+  margin-top: 5%;
+  font-size: 16px;
+}
+
+#section #sec2 .content_box .img_box {
+  width: 50%;
+}
