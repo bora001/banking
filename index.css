@@ -178,14 +178,21 @@ img {
   color: #fff;
   text-shadow: 1px 1px 6px rgba(31, 29, 29, 0.747);
   z-index: 99;
+  cursor: pointer;
 }
-#section #sec3 .tab_cnt .tab_btns .btn01 {
+#section #sec3 .tab_cnt .tab_btns .btn.active {
+  box-shadow: 3px 3px 10px gray;
+  margin-top: -20px;
+  transition: 0.3s;
+}
+
+#section #sec3 .tab_cnt .tab_btns [data-tab="1"] {
   background-color: rgb(134, 85, 212);
 }
-#section #sec3 .tab_cnt .tab_btns .btn02 {
+#section #sec3 .tab_cnt .tab_btns [data-tab="2"] {
   background-color: rgba(47, 142, 219, 0.788);
 }
-#section #sec3 .tab_cnt .tab_btns .btn03 {
+#section #sec3 .tab_cnt .tab_btns [data-tab="3"] {
   background-color: rgb(8, 153, 134);
 }
 
@@ -200,7 +207,25 @@ img {
   left: 50%;
   width: 85%;
   transform: translate(-50%);
-  background-color: aliceblue;
+  opacity: 0;
+}
+
+#section #sec3 .tab_cnt .tab_box .tab.active {
+  opacity: 1;
+}
+
+#section #sec3 .tab_cnt .tab_box .tab.tab01 {
+  background-color: rgba(134, 85, 212, 0.12);
+}
+#section #sec3 .tab_cnt .tab_box .tab.tab02 {
+  background-color: rgba(47, 142, 219, 0.12);
+}
+#section #sec3 .tab_cnt .tab_box .tab.tab03 {
+  background-color: rgb(8, 153, 134, 0.12);
+}
+
+#section #sec3 .tab_cnt .tab_box .tab:first-child {
+  z-index: 9;
 }
 
 #section #sec3 .tab_cnt .tab_box .tab h3 {
