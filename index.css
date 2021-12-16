@@ -26,6 +26,11 @@ img {
   z-index: 99999;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.26);
 }
+
+.off {
+  opacity: 0;
+  /* display: none; */
+}
 /* header */
 
 #header {
@@ -212,26 +217,37 @@ img {
 /* section4 */
 #section #sec4 .content_box {
   position: relative;
-  border: 3px solid goldenrod;
+  /* border: 3px solid goldenrod; */
   width: 100%;
   height: 500px;
+  overflow: hidden;
 }
 #section #sec4 .content_box .review_box {
   position: absolute;
-  border: 2px solid brown;
+  /* border: 2px solid brown; */
   /* display: flex; */
+  transition: 0.6s;
+
+  /* transform: translateY(414px); */
 }
 #section #sec4 .content_box .review_box .review {
   position: relative;
+  height: 500px;
+  /* border: 2px solid goldenrod; */
+  display: flex;
+  align-items: center;
+}
+#section #sec4 .content_box .review_box .review .txt_box {
   background-color: rgba(0, 128, 0, 0.055);
   width: 70%;
-  margin: 100px auto 200px;
   padding: 40px;
+  margin: 0 auto;
 }
+
 #section #sec4 .content_box .review_box .review .user_box {
   position: absolute;
-  top: -50px;
-  right: 100px;
+  top: 70px;
+  right: 200px;
   background-color: rgba(190, 226, 190, 0.911);
   width: 140px;
   display: flex;
