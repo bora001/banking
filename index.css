@@ -84,7 +84,8 @@ img {
 
 #section #sec1,
 #section #sec2,
-#section #sec3 {
+#section #sec3,
+#section #sec4 {
   margin: 70px 0;
   /* border: 2px solid gold; */
   position: relative;
@@ -211,24 +212,28 @@ img {
 /* section4 */
 #section #sec4 .content_box {
   position: relative;
+  border: 3px solid goldenrod;
+  width: 100%;
+  height: 500px;
 }
 #section #sec4 .content_box .review_box {
+  position: absolute;
   border: 2px solid brown;
   /* display: flex; */
 }
 #section #sec4 .content_box .review_box .review {
   position: relative;
-  border: 2px solid blue;
+  background-color: rgba(0, 128, 0, 0.055);
   width: 70%;
-  margin: 150px auto 0;
+  margin: 100px auto 200px;
   padding: 40px;
 }
 #section #sec4 .content_box .review_box .review .user_box {
   position: absolute;
   top: -50px;
   right: 100px;
-  border: 2px solid red;
-  width: 130px;
+  background-color: rgba(190, 226, 190, 0.911);
+  width: 140px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -249,21 +254,34 @@ img {
 }
 
 #section #sec4 .content_box .arrow_box {
-  border: 2px solid red;
   display: flex;
   justify-content: space-between;
   position: absolute;
   width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
   padding: 5%;
+  z-index: 99;
 }
 #section #sec4 .content_box .arrow_box .arrow {
   width: 50px;
   height: 50px;
   background-size: contain;
   background-image: url("https://cdn.pixabay.com/photo/2021/10/09/12/45/play-button-6694069_960_720.png");
+  cursor: pointer;
 }
 #section #sec4 .content_box .arrow_box .arrow.arrow_left {
   transform: rotate(-180deg);
+}
+
+#section #sec4 .content_box .review_box .review .txt_box h3 {
+  font-size: 26px;
+  line-height: 52px;
+}
+
+#section #sec4 .content_box .review_box .review .txt_box p {
+  font-size: 16px;
+  line-height: 22px;
 }
 
 /* footer */
