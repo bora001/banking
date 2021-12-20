@@ -8,6 +8,37 @@ window.addEventListener("scroll", function () {
     nav.classList.remove("sticker");
   }
 });
+
+// modal
+
+const openModal = document.querySelectorAll(".go_modal");
+const modal = document.querySelector(".modal");
+const exit = document.querySelectorAll(".modal .exit");
+const signupForm = document.querySelector(".modal .sign_up");
+const signonForm = document.querySelector(".modal .sign_on");
+openModal.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    let btnType = btn.innerText;
+    if (btnType == "Open Account") {
+      console.log("signup");
+      signupForm.classList.remove("remove");
+    } else {
+      console.log("signon");
+      signonForm.classList.remove("remove");
+    }
+
+    modal.classList.remove("remove");
+  });
+});
+
+exit.forEach((exitBtn) => {
+  exitBtn.addEventListener("click", () => {
+    modal.classList.add("remove");
+    signupForm.classList.add("remove");
+    signonForm.classList.add("remove");
+  });
+});
+
 // tab
 const tabBtn = document.querySelectorAll("#sec3 .tab_btns .btn");
 const tabBox = document.querySelectorAll("#sec3 .tab_box .tab");

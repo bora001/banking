@@ -26,8 +26,30 @@ img {
 
 .off {
   opacity: 0;
-  /* display: none; */
 }
+
+.remove {
+  display: none !important;
+}
+
+.open_account,
+.sign_on {
+  width: 190px;
+  text-align: center;
+  font-size: 18px;
+  line-height: 50px;
+  padding: 0 20px;
+  border-radius: 30px;
+  color: #fff;
+  background-color: rgb(11, 197, 135);
+  cursor: pointer;
+}
+
+.sign_on {
+  width: 120px;
+  background-color: rgb(73, 89, 233);
+}
+
 /* header */
 
 #header {
@@ -66,21 +88,6 @@ img {
 #header .btn_box .menu_list li {
   font-weight: 500;
   cursor: pointer;
-}
-
-#header .btn_box .open_account,
-#header .btn_box .sign_on {
-  font-size: 18px;
-  line-height: 50px;
-  padding: 0 20px;
-  border-radius: 30px;
-  color: #fff;
-  background-color: rgb(11, 197, 135);
-  cursor: pointer;
-}
-
-#header .btn_box .sign_on {
-  background-color: rgb(73, 89, 233);
 }
 
 /* section */
@@ -326,6 +333,75 @@ img {
   font-size: 16px;
   line-height: 22px;
 }
+#section .modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  z-index: 9999999;
+  background-color: rgba(31, 29, 29, 0.568);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#section .modal form {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  background-color: #fff;
+  border-radius: 25px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.507);
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#section .modal form .exit {
+  position: absolute;
+  font-size: 28px;
+  top: 10px;
+  right: 20px;
+  color: #000;
+  cursor: pointer;
+}
+
+#section .modal form .logo {
+  display: flex;
+  align-items: center;
+  color: #000;
+  margin: 0 auto;
+}
+
+#section .modal form .logo p {
+  font-size: 28px;
+  font-weight: 500;
+  margin-left: 20px;
+}
+
+#section .modal form .logo img {
+  width: 60px;
+}
+
+#section .modal form input {
+  border: none;
+  border-bottom: 1.5px solid rgba(102, 101, 101, 0.452);
+  text-indent: 15px;
+  font-size: 18px;
+  line-height: 28px;
+  margin: 5px 0 10px;
+}
+
+#section .modal form .btn {
+  margin-top: 20px;
+}
+
+#section .modal form .open_account {
+  width: 120px;
+}
 
 /* footer */
 
@@ -346,23 +422,15 @@ img {
   font-weight: 500;
 }
 
-#footer .footer_inner .open_account {
-  font-size: 18px;
-  line-height: 50px;
-  padding: 0 20px;
-  border-radius: 30px;
-  color: #fff;
-  width: 200px;
-  margin: 40px auto;
-  background-color: rgb(11, 197, 135);
-  cursor: pointer;
-}
 #footer .footer_inner .footer_menu {
   margin: 100px auto 20px;
 }
 #footer .footer_inner .footer_menu a {
   font-weight: 300;
   padding: 20px;
+}
+#footer .open_account {
+  margin: 30px auto 0;
 }
 
 #footer .footer_inner p {
