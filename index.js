@@ -14,8 +14,8 @@ window.addEventListener("scroll", function () {
 const openModal = document.querySelectorAll(".go_modal");
 const modal = document.querySelector(".modal");
 const exit = document.querySelectorAll(".modal .exit");
-const signupForm = document.querySelector(".modal .sign_up");
-const signonForm = document.querySelector(".modal .sign_on");
+const signupForm = document.querySelector(".modal .sign_up_form");
+const signonForm = document.querySelector(".modal .sign_on_form");
 openModal.forEach((btn) => {
   btn.addEventListener("click", () => {
     let btnType = btn.innerText;
@@ -33,11 +33,47 @@ openModal.forEach((btn) => {
 
 exit.forEach((exitBtn) => {
   exitBtn.addEventListener("click", () => {
-    modal.classList.add("remove");
-    signupForm.classList.add("remove");
-    signonForm.classList.add("remove");
+    removeModal();
   });
 });
+const removeModal = () => {
+  modal.classList.add("remove");
+  signupForm.classList.add("remove");
+  signonForm.classList.add("remove");
+};
+
+//login - test
+
+const loginBtn = document.querySelectorAll(".login_btn");
+const loginBox = document.querySelectorAll(".login_box .login_inner");
+
+loginBtn.forEach((btn) => {
+  console.log(btn);
+  btn.addEventListener("click", () => {
+    if (btn.innerText == "Sign On") {
+      console.log("lets login");
+      loginAct();
+      signupForm.reset();
+      signonForm.reset();
+    } else {
+      console.log("lets logout");
+    }
+    loginBox.forEach((box) => {
+      box.classList.toggle("remove");
+    });
+  });
+});
+
+const loginAct = () => {
+  let userData = signonForm.querySelector("input[type='text']").value;
+  let userPw = signonForm.querySelector("input[type='password']").value;
+  console.log("heee", userData);
+  removeModal();
+  const intro = document.querySelector(".user_info span");
+
+  intro.innerText = `${userData}`;
+  console.log(intro.innerText);
+};
 
 // tab
 const tabBtn = document.querySelectorAll("#sec3 .tab_btns .btn");

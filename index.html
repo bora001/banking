@@ -18,11 +18,21 @@
       </div>
 
       <div class="btn_box">
-        <a href="#sec2">About us</a>
-        <a href="#sec3">Highlight</a>
-        <a href="#sec4">Reviews</a>
-        <div class="go_modal open_account">Open Account</div>
-        <div class="go_modal sign_on">Sign On</div>
+        <div class="menu_box">
+          <a href="#sec2">About us</a>
+          <a href="#sec3">Highlight</a>
+          <a href="#sec4">Reviews</a>
+        </div>
+        <div class="login_box">
+          <div class="before_login login_inner">
+            <div class="go_modal open_account">Open Account</div>
+            <div class="go_modal sign_on">Sign On</div>
+          </div>
+          <div class="after_login login_inner remove">
+            <div class="user_info">Welcome ! <span></span></div>
+            <div class="login_btn sign_out">Sign Out</div>
+          </div>
+        </div>
       </div>
     </div>
     <div id="section">
@@ -277,7 +287,7 @@
         </div>
       </div>
       <div class="modal remove">
-        <form class="sign_up remove">
+        <form class="sign_up_form remove">
           <div class="exit">✖</div>
           <div class="logo">
             <p>The Banking</p>
@@ -292,7 +302,7 @@
           <div class="open_account btn">Sign up</div>
           <p></p>
         </form>
-        <form class="sign_on remove">
+        <form class="sign_on_form remove">
           <div class="exit">✖</div>
 
           <div class="logo">
@@ -305,14 +315,16 @@
 
           <input type="text" placeholder="Username" />
           <input type="password" placeholder="Password" />
-          <div class="sign_on btn">Sign On</div>
+          <div class="login_btn sign_on btn">Sign On</div>
         </form>
       </div>
     </div>
     <div id="footer">
       <div class="footer_inner">
         <h2>Thank you for visiting and Enjoy the banking</h2>
-        <div class="open_account">Visit Github</div>
+        <div class="open_account">
+          <a href="https://github.com/bora001" target="blank">Visit Github</a>
+        </div>
 
         <div class="footer_menu">
           <a href="javascript:;">Products</a>
