@@ -36,6 +36,7 @@ exit.forEach((exitBtn) => {
     removeModal();
   });
 });
+
 const removeModal = () => {
   modal.classList.add("remove");
   signupForm.classList.add("remove");
@@ -64,6 +65,8 @@ loginBtn.forEach((btn) => {
   });
 });
 
+const mainPage = document.getElementById("section");
+const loginPage = document.getElementById("login_page");
 const loginAct = () => {
   let userData = signonForm.querySelector("input[type='text']").value;
   let userPw = signonForm.querySelector("input[type='password']").value;
@@ -72,7 +75,8 @@ const loginAct = () => {
   const intro = document.querySelector(".user_info span");
 
   intro.innerText = `${userData}`;
-  console.log(intro.innerText);
+  mainPage.classList.add("remove");
+  loginPage.classList.remove("remove");
 };
 
 // tab

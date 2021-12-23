@@ -63,7 +63,6 @@ img {
   display: flex;
   z-index: 99999;
   background-color: #fff;
-
   justify-content: space-between;
   align-items: center;
   padding: 0 40px;
@@ -123,15 +122,7 @@ img {
 #header .login_box .user_info span {
   font-weight: 600;
 }
-/* #header .btn_box .sign_user {
-  width: 190px;
-  text-align: center;
-  font-size: 18px;
-  line-height: 50px;
-  padding: 0 20px;
-  border-radius: 30px;
-  color: #000;
-} */
+
 /* section */
 
 #section {
@@ -443,6 +434,120 @@ img {
 
 #section .modal form .open_account {
   width: 120px;
+}
+
+#login_page {
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 70px;
+  padding-bottom: 200px;
+}
+#login_page .account {
+  margin: 50px auto;
+  display: flex;
+}
+
+#login_page .account h2 {
+  font-size: 23px;
+  font-weight: 500;
+}
+#login_page .account .balance {
+  font-size: 23px;
+  font-weight: 900;
+  margin-left: 20px;
+}
+
+#login_page .summary {
+  display: flex;
+}
+/* detail */
+#login_page .summary .detail {
+  width: 1400px;
+}
+#login_page .summary .detail .transaction {
+  display: flex;
+  border-bottom: 2px solid rgba(137, 43, 226, 0.144);
+}
+#login_page .summary .detail .transaction .process {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  padding: 20px 30px;
+  line-height: 40px;
+}
+#login_page .summary .detail .transaction .process .amount {
+  font-size: 18px;
+  text-indent: 120px;
+}
+
+#login_page .summary .detail .transaction .process span {
+  position: absolute;
+  background-color: blueviolet;
+  color: #fff;
+  border-radius: 15px;
+  font-size: 14px;
+  line-height: 22px;
+  padding: 0 10px;
+  display: inline-block;
+  top: 50%;
+  left: 20px;
+  transform: translate(0, -50%);
+}
+#login_page .summary .detail .transaction .result {
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+#login_page .summary .action {
+  width: 200px;
+}
+
+#login_page .summary .action input {
+  border-radius: 10px;
+  border: none;
+  width: 160px;
+  text-indent: 15px;
+  line-height: 25px;
+}
+
+#login_page .summary .action .transfer {
+  background-color: rgba(73, 89, 233, 0.1);
+  height: 160px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#login_page .summary .action button {
+  border-radius: 15px;
+  border: none;
+  width: 80px;
+  line-height: 25px;
+  color: #fff;
+  letter-spacing: 0.3px;
+  font-weight: 500;
+  margin: 5px auto 0;
+  cursor: pointer;
+}
+#login_page .summary .action .transfer button {
+  background-color: rgb(73, 89, 233);
+}
+
+#login_page .summary .action .loan {
+  background-color: rgba(11, 197, 135, 0.15);
+  height: 130px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+#login_page .summary .action .loan button {
+  background-color: rgb(12, 161, 112);
 }
 
 /* footer */
