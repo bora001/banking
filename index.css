@@ -483,7 +483,7 @@ img {
 
 #login_page .summary .detail .transaction .process span {
   position: absolute;
-  background-color: blueviolet;
+  background-color: rgb(69, 72, 238);
   color: #fff;
   border-radius: 15px;
   font-size: 14px;
@@ -494,6 +494,10 @@ img {
   left: 20px;
   transform: translate(0, -50%);
 }
+#login_page .summary .detail .transaction .process span.withdraw {
+  background-color: red;
+}
+
 #login_page .summary .detail .transaction .result {
   font-size: 18px;
   display: flex;

@@ -135,3 +135,32 @@ arrow.forEach((arr) => {
     ReviewBox.style.transform = `translateY(-${y * count}px)`;
   });
 });
+
+//loan
+const requestLoan = document.querySelector("#login_page .loan .request");
+
+requestLoan.addEventListener("click", () => {
+  console.log("request Loan!");
+  const requestAmount = document.querySelector("#login_page .loan input");
+  console.log(requestAmount.value);
+  let date = getDate();
+  const accountDetail = document.querySelector("#login_page .summary .detail");
+  const transaction = `<div class="transaction">
+              <div class="process">
+                <span>Deposit</span>
+                <p class="amount">$${requestAmount.value}</p>
+                <p>Loan from The Banking</p>
+                <p>${date}</p>
+              </div>
+              <div class="result">
+                <p>$${requestAmount.value}</p>
+              </div>`;
+
+  accountDetail.insertAdjacentHTML("afterbegin", transaction);
+});
+
+//date
+const getDate = () => {
+  let dateNow = new Date();
+  return dateNow.toString().split(" ").slice(1, 5).join(" ");
+};
