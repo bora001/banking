@@ -136,15 +136,22 @@ arrow.forEach((arr) => {
   });
 });
 
+//balance
+const balance = document.querySelector("#login_page .account .balance span");
+let currentBalance = Number(balance.innerHTML);
+console.log("current Balance", currentBalance);
+
 //loan
 const requestLoan = document.querySelector("#login_page .loan .request");
+const transferSend = document.querySelector("#login_page .transfer .send");
 
 requestLoan.addEventListener("click", () => {
   console.log("request Loan!");
   const requestAmount = document.querySelector("#login_page .loan input");
-  console.log(requestAmount.value);
   let date = getDate();
   const accountDetail = document.querySelector("#login_page .summary .detail");
+  currentBalance = currentBalance + Number(requestAmount.value);
+
   const transaction = `<div class="transaction">
               <div class="process">
                 <span>Deposit</span>
@@ -153,7 +160,38 @@ requestLoan.addEventListener("click", () => {
                 <p>${date}</p>
               </div>
               <div class="result">
-                <p>$${requestAmount.value}</p>
+                <p>$${currentBalance}</p>
+              </div>`;
+
+  accountDetail.insertAdjacentHTML("afterbegin", transaction);
+  // console.log(balance);
+  balance.innerText = currentBalance;
+  requestAmount.value = "";
+});
+
+//transfer
+
+transferSend.addEventListener("click", () => {
+  const transferAmount = document.querySelector(
+    "#login_page .transfer input[type='number']"
+  );
+
+  const transferTo = document.querySelector(
+    "#login_page .transfer input[type='text']"
+  );
+
+  let date = getDate();
+
+  const accountDetail = document.querySelector("#login_page .summary .detail");
+  const transaction = `<div class="transaction">
+              <div class="process">
+                <span class="withdraw">Withdraw</span>
+                <p class="amount">$${transferAmount.value}</p>
+                <p>${transferTo.value}</p>
+                <p>${date}</p>
+              </div>
+              <div class="result">
+                <p>$${transferAmount.value}</p>
               </div>`;
 
   accountDetail.insertAdjacentHTML("afterbegin", transaction);
