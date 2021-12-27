@@ -141,18 +141,36 @@ const balance = document.querySelector("#login_page .account .balance span");
 let currentBalance = Number(balance.innerHTML);
 console.log("current Balance", currentBalance);
 
+//amountCheck
+let amountValid = true;
+const amountCheck = (value) => {
+  if (value <= 0) {
+    alert("invalid Amount, Please Try again");
+    amountValid = false;
+  }
+  if (value > 1000) {
+    alert("Please contact the customer service");
+    amountValid = false;
+  }
+};
+
 //loan
 const requestLoan = document.querySelector("#login_page .loan .request");
 const transferSend = document.querySelector("#login_page .transfer .send");
 
 requestLoan.addEventListener("click", () => {
-  console.log("request Loan!");
   const requestAmount = document.querySelector("#login_page .loan input");
-  let date = getDate();
-  const accountDetail = document.querySelector("#login_page .summary .detail");
-  currentBalance = currentBalance + Number(requestAmount.value);
 
-  const transaction = `<div class="transaction">
+  amountCheck(requestAmount.value);
+  if (amountValid) {
+    let date = getDate();
+
+    const accountDetail = document.querySelector(
+      "#login_page .summary .detail"
+    );
+    currentBalance = currentBalance + Number(requestAmount.value);
+
+    const transaction = `<div class="transaction">
               <div class="process">
                 <span>Deposit</span>
                 <p class="amount">$${requestAmount.value}</p>
@@ -163,10 +181,21 @@ requestLoan.addEventListener("click", () => {
                 <p>$${currentBalance}</p>
               </div>`;
 
-  accountDetail.insertAdjacentHTML("afterbegin", transaction);
-  // console.log(balance);
-  balance.innerText = currentBalance;
+    accountDetail.insertAdjacentHTML("afterbegin", transaction);
+    balance.innerText = currentBalance;
+  }
   requestAmount.value = "";
+
+  // if (requestAmount.value <= 0) {
+  //   alert("invalid Amount, Please Try again");
+  //   requestAmount.value = "";
+  //   return;
+  // }
+  // if (requestAmount.value > 1000) {
+  //   alert("Please contact the customer service");
+  //   requestAmount.value = "";
+  //   return;
+  // }
 });
 
 //transfer
