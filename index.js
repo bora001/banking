@@ -147,10 +147,11 @@ const amountCheck = (value) => {
   if (value <= 0) {
     alert("invalid Amount, Please Try again");
     amountValid = false;
-  }
-  if (value > 1000) {
+  } else if (value > 1000) {
     alert("Please contact the customer service");
     amountValid = false;
+  } else {
+    amountValid = true;
   }
 };
 
@@ -185,17 +186,6 @@ requestLoan.addEventListener("click", () => {
     balance.innerText = currentBalance;
   }
   requestAmount.value = "";
-
-  // if (requestAmount.value <= 0) {
-  //   alert("invalid Amount, Please Try again");
-  //   requestAmount.value = "";
-  //   return;
-  // }
-  // if (requestAmount.value > 1000) {
-  //   alert("Please contact the customer service");
-  //   requestAmount.value = "";
-  //   return;
-  // }
 });
 
 //transfer
@@ -208,11 +198,13 @@ transferSend.addEventListener("click", () => {
   const transferTo = document.querySelector(
     "#login_page .transfer input[type='text']"
   );
-
-  let date = getDate();
-
   const accountDetail = document.querySelector("#login_page .summary .detail");
-  const transaction = `<div class="transaction">
+
+  amountCheck(transferAmount.value);
+  if (amountValid) {
+    let date = getDate();
+
+    const transaction = `<div class="transaction">
               <div class="process">
                 <span class="withdraw">Withdraw</span>
                 <p class="amount">$${transferAmount.value}</p>
@@ -223,7 +215,10 @@ transferSend.addEventListener("click", () => {
                 <p>$${transferAmount.value}</p>
               </div>`;
 
-  accountDetail.insertAdjacentHTML("afterbegin", transaction);
+    accountDetail.insertAdjacentHTML("afterbegin", transaction);
+  }
+  transferAmount.value = "";
+  transferTo.value = "";
 });
 
 //date
