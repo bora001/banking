@@ -199,6 +199,7 @@ transferSend.addEventListener("click", () => {
     "#login_page .transfer input[type='text']"
   );
   const accountDetail = document.querySelector("#login_page .summary .detail");
+  currentBalance = currentBalance - Number(transferAmount.value);
 
   amountCheck(transferAmount.value);
   if (amountValid) {
@@ -217,6 +218,7 @@ transferSend.addEventListener("click", () => {
 
     accountDetail.insertAdjacentHTML("afterbegin", transaction);
   }
+  balance.innerText = currentBalance;
   transferAmount.value = "";
   transferTo.value = "";
 });
