@@ -219,7 +219,7 @@ transferSend.addEventListener("click", () => {
                 <p>${date}</p>
               </div>
               <div class="result">
-                <p>$${transferAmount.value}</p>
+                <p>$${currentBalance}</p>
               </div>`;
 
     accountDetail.insertAdjacentHTML("afterbegin", transaction);
