@@ -202,6 +202,10 @@ transferSend.addEventListener("click", () => {
   currentBalance = currentBalance - Number(transferAmount.value);
 
   amountCheck(transferAmount.value);
+  if (currentBalance < 0) {
+    alert("Sorry, insufficient balance");
+    return false;
+  }
   if (amountValid) {
     let date = getDate();
 
