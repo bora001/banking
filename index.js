@@ -204,6 +204,8 @@ transferSend.addEventListener("click", () => {
   amountCheck(transferAmount.value);
   if (currentBalance < 0) {
     alert("Sorry, insufficient balance");
+    transferAmount.value = "";
+    transferTo.value = "";
     return false;
   }
   if (amountValid) {
