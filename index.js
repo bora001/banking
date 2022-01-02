@@ -45,7 +45,7 @@ const removeModal = () => {
 
 //login - test
 
-const loginBtn = document.querySelectorAll(".login_btn");
+const loginBtn = document.querySelectorAll(".login_box .login_btn");
 const loginBox = document.querySelectorAll(".login_box .login_inner");
 
 loginBtn.forEach((btn) => {
@@ -67,6 +67,7 @@ loginBtn.forEach((btn) => {
 
 const mainPage = document.getElementById("section");
 const loginPage = document.getElementById("login_page");
+
 const loginAct = () => {
   let userData = signonForm.querySelector("input[type='text']").value;
   let userPw = signonForm.querySelector("input[type='password']").value;
