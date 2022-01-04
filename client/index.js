@@ -57,7 +57,10 @@ signupForm.addEventListener("submit", function (e) {
     );
     return true;
   }
-
+  if (userPw.length < 5) {
+    alert("password has to be longer than 5 digits");
+    return true;
+  }
   if (userPw !== userPwCheck) {
     alert("password is incorrect");
     return true;
@@ -66,14 +69,18 @@ signupForm.addEventListener("submit", function (e) {
   const data = `username=${userData}&password=${userPw}`;
   // const data = { username: userData, password: userPw };
 
-  fetch("http://localhost:3000/register", {
+  fetch(localUrl + ":3000/register", {
     credentials: "include",
     method: "POST",
+
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
     },
     body: data,
-  });
+  })
+    .then((res) => res.json())
+    .then((response) => console.log("Success:", JSON.stringify(response)))
+    .catch((error) => console.error("Error:", error));
 
   signupForm.reset();
   removeModal();
