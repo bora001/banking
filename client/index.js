@@ -72,7 +72,6 @@ signupForm.addEventListener("submit", function (e) {
   fetch(localUrl + ":3000/register", {
     credentials: "include",
     method: "POST",
-
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
     },
@@ -85,6 +84,7 @@ signupForm.addEventListener("submit", function (e) {
   signupForm.reset();
   removeModal();
 });
+
 // //login - test
 
 const loginBtn = document.querySelectorAll(".login_box .login_btn");
