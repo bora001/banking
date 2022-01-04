@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Javascript - banking</title>
-    <link rel="stylesheet" href="./index.css" />
+    <link rel="stylesheet" href="/client/index.css" />
   </head>
   <body>
     <div id="header">
@@ -287,7 +287,7 @@
         </div>
       </div>
       <div class="modal remove">
-        <form class="sign_up_form remove">
+        <form class="sign_up_form remove" method="POST">
           <div class="exit">✖</div>
           <div class="logo">
             <p>The Banking</p>
@@ -296,11 +296,19 @@
               alt=""
             />
           </div>
-          <input type="text" placeholder="Username" />
-          <input type="password" placeholder="Password" />
-          <input type="password" placeholder="Confirm Password" />
-          <div class="open_account btn">Sign up</div>
-          <p></p>
+          <input type="text" name="username" placeholder="Username" />
+          <input
+            type="password"
+            name="password"
+            class="password1"
+            placeholder="Password"
+          />
+          <input
+            type="password"
+            class="password2"
+            placeholder="Confirm Password"
+          />
+          <button class="open_account btn" type="submit">Sign up</button>
         </form>
         <form class="sign_on_form remove">
           <div class="exit">✖</div>
@@ -361,5 +369,7 @@
       </div>
     </div>
   </body>
-  <script src="./index.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+  <script src="/client/index.js"></script>
 </html>
