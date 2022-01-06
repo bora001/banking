@@ -10,12 +10,12 @@ window.addEventListener("scroll", function () {
 });
 
 // modal
-
 const openModal = document.querySelectorAll(".go_modal");
 const modal = document.querySelector(".modal");
 const exit = document.querySelectorAll(".modal .exit");
 const signupForm = document.querySelector(".modal .sign_up_form");
 const signonForm = document.querySelector(".modal .sign_on_form");
+
 openModal.forEach((btn) => {
   btn.addEventListener("click", () => {
     let btnType = btn.innerText;
@@ -26,7 +26,6 @@ openModal.forEach((btn) => {
       console.log("signon");
       signonForm.classList.remove("remove");
     }
-
     modal.classList.remove("remove");
   });
 });
@@ -87,11 +86,13 @@ signupForm.addEventListener("submit", function (e) {
 
 // //login - test
 
-const loginBtn = document.querySelectorAll(".login_box .login_btn");
+const loginBtn = document.querySelectorAll(".login_btn");
 const loginBox = document.querySelectorAll(".login_box .login_inner");
+const mainCnt = document.querySelectorAll(".main_cnt");
+
+// const signonBtn = signonForm.querySelector(".sign_on_form .sign_on");
 
 loginBtn.forEach((btn) => {
-  console.log(btn);
   btn.addEventListener("click", () => {
     if (btn.innerText == "Sign On") {
       console.log("lets login");
@@ -100,25 +101,56 @@ loginBtn.forEach((btn) => {
       signonForm.reset();
     } else {
       console.log("lets logout");
+      changeCtn();
     }
-    loginBox.forEach((box) => {
-      box.classList.toggle("remove");
-    });
   });
 });
 
-const mainPage = document.getElementById("section");
-const loginPage = document.getElementById("login_page");
+const changeCtn = () => {
+  loginBox.forEach((box) => {
+    box.classList.toggle("remove");
+  });
+  mainCnt.forEach((cnt) => {
+    cnt.classList.toggle("remove");
+  });
+};
 
 const loginAct = () => {
+  console.log("sign onnnn");
+
   let userData = signonForm.querySelector("input[type='text']").value;
   let userPw = signonForm.querySelector("input[type='password']").value;
-  removeModal();
   const intro = document.querySelector(".user_info span");
 
-  intro.innerText = `${userData}`;
-  mainPage.classList.add("remove");
-  loginPage.classList.remove("remove");
+  removeModal();
+
+  //login-server
+  const data = `username=${userData}&password=${userPw}`;
+
+  fetch(localUrl + ":3000/login", {
+    credentials: "include",
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: data,
+  })
+    .then((res) => res.json())
+    .then((response) => {
+      console.log("Success:", response);
+      if (response.loginSuccess) {
+        console.log("success!");
+        localStorage.setItem("x_auth", response.token);
+      } else {
+        console.log("succese fail!!!!");
+        alert(`${response.message}`);
+        return false;
+      }
+
+      changeCtn();
+      intro.innerText = `${userData}`;
+    })
+    .catch((error) => console.error("Error:", error));
 };
 
 // tab

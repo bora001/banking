@@ -38,6 +38,33 @@ app.post("/register", (req, res) => {
   console.log("user🎈", user);
 });
 
+app.post("/login", (req, res) => {
+  console.log(req.body);
+  User.findOne({ username: req.body.username }, (err, user) => {
+    console.log(user);
+    if (!user) {
+      return res.json({
+        loginSuccess: false,
+        message: "We can not find the username",
+      });
+    }
+    user.comparePassword(req.body.password, (err, isMatch) => {
+      if (!isMatch)
+        return res.json({
+          loginSuccess: false,
+          message: "incorrect Password",
+        });
+      user.generateToken((err, user) => {
+        if (err) return res.status(400).send(err);
+        return res.status(200).json({
+          loginSuccess: true,
+          token: user.token,
+        });
+      });
+    });
+  });
+});
+
 app.listen(3000, (req, res) => {
   console.log("server is connected...");
 });
