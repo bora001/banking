@@ -12,6 +12,12 @@ const userSchema = mongoose.Schema({
     type: String,
     minlength: 5,
   },
+  transaction: {
+    type: Object,
+  },
+  balance: {
+    type: Number,
+  },
 });
 
 userSchema.pre("save", function (next) {

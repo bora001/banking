@@ -59,10 +59,42 @@ app.post("/login", (req, res) => {
         return res.status(200).json({
           loginSuccess: true,
           token: user.token,
+          balance: user.balance,
+          transaction: user.transaction,
         });
       });
     });
   });
+});
+
+app.post("/transfer", (req, res) => {
+  console.log(req.body);
+
+  User.findOneAndUpdate(
+    {
+      username: req.body.From,
+    },
+    {
+      $inc: { balance: -req.body.Amount },
+      $push: { transaction: req.body },
+    },
+    // { $push: { transfer: req.body } },
+
+    { new: true },
+    (err, update) => {
+      if (err) return res.status(200).json({ success: false, err });
+      return res
+        .status(200)
+        .send({ success: true, update: true, target: req.body, update });
+    }
+  );
+
+  // const user = new User(req.body);
+  // user.save((err, userInfo) => {
+  //   if (err) return res.json({ success: false, err });
+  //   return res.status(200).json({ success: true });
+  // });
+  // console.log("user🎈", user);
 });
 
 app.listen(3000, (req, res) => {

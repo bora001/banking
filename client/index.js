@@ -65,7 +65,7 @@ signupForm.addEventListener("submit", function (e) {
     return true;
   }
 
-  const data = `username=${userData}&password=${userPw}`;
+  const data = `username=${userData}&password=${userPw}&balance=0`;
   // const data = { username: userData, password: userPw };
 
   fetch(localUrl + ":3000/register", {
@@ -115,12 +115,16 @@ const changeCtn = () => {
   });
 };
 
-const loginAct = () => {
-  console.log("sign onnnn");
+//balance
+const balance = document.querySelector("#login_page .account .balance span");
+// let currentBalance = balance.innerHTML;
+// let currentBalance = Number(balance.innerHTML);
+// console.log("current Balance", currentBalance);
+const intro = document.querySelector(".user_info span");
 
+const loginAct = () => {
   let userData = signonForm.querySelector("input[type='text']").value;
   let userPw = signonForm.querySelector("input[type='password']").value;
-  const intro = document.querySelector(".user_info span");
 
   removeModal();
 
@@ -139,10 +143,13 @@ const loginAct = () => {
     .then((response) => {
       console.log("Success:", response);
       if (response.loginSuccess) {
-        console.log("success!");
         localStorage.setItem("x_auth", response.token);
+        balance.innerHTML = response.balance;
+        let allTransaction = response.transaction;
+        for (let log of allTransaction) {
+          makeTransaction(log);
+        }
       } else {
-        console.log("succese fail!!!!");
         alert(`${response.message}`);
         return false;
       }
@@ -151,6 +158,25 @@ const loginAct = () => {
       intro.innerText = `${userData}`;
     })
     .catch((error) => console.error("Error:", error));
+};
+//transaction
+const makeTransaction = (transaction) => {
+  let insertTransaction = `<div class="transaction">
+                    <div class="process">
+                      <span ${
+                        transaction.type == "transfer"
+                          ? `class="withdraw">Withdraw`
+                          : `>Deposit`
+                      }</span>
+                      <p class="amount">$${transaction.Amount}</p>
+                      <p>${transaction.To}</p>
+                      <p>${transaction.date}</p>
+                    </div>
+                    <div class="result">
+                      <p>$${transaction.balance}</p>
+                    </div>`;
+
+  accountDetail.insertAdjacentHTML("afterbegin", insertTransaction);
 };
 
 // tab
@@ -210,11 +236,6 @@ arrow.forEach((arr) => {
   });
 });
 
-//balance
-const balance = document.querySelector("#login_page .account .balance span");
-let currentBalance = Number(balance.innerHTML);
-console.log("current Balance", currentBalance);
-
 //amountCheck
 let amountValid = true;
 const amountCheck = (value) => {
@@ -245,24 +266,25 @@ requestLoan.addEventListener("click", () => {
     );
     currentBalance = currentBalance + Number(requestAmount.value);
 
-    const transaction = `<div class="transaction">
-              <div class="process">
-                <span>Deposit</span>
-                <p class="amount">$${requestAmount.value}</p>
-                <p>Loan from The Banking</p>
-                <p>${date}</p>
-              </div>
-              <div class="result">
-                <p>$${currentBalance}</p>
-              </div>`;
+    // const transaction = `<div class="transaction">
+    //           <div class="process">
+    //             <span>Deposit</span>
+    //             <p class="amount">$${requestAmount.value}</p>
+    //             <p>Loan from The Banking</p>
+    //             <p>${date}</p>
+    //           </div>
+    //           <div class="result">
+    //             <p>$${currentBalance}</p>
+    //           </div>`;
 
-    accountDetail.insertAdjacentHTML("afterbegin", transaction);
+    // accountDetail.insertAdjacentHTML("afterbegin", transaction);
     balance.innerText = currentBalance;
   }
   requestAmount.value = "";
 });
 
 //transfer
+const accountDetail = document.querySelector("#login_page .summary .detail");
 
 transferSend.addEventListener("click", () => {
   const transferAmount = document.querySelector(
@@ -272,11 +294,10 @@ transferSend.addEventListener("click", () => {
   const transferTo = document.querySelector(
     "#login_page .transfer input[type='text']"
   );
-  const accountDetail = document.querySelector("#login_page .summary .detail");
-  currentBalance = currentBalance - Number(transferAmount.value);
+  // currentBalance = currentBalance - Number(transferAmount.value);
 
   amountCheck(transferAmount.value);
-  if (currentBalance < 0) {
+  if (Number(balance.innerHTML) < Number(transferAmount.value)) {
     alert("Sorry, insufficient balance");
     transferAmount.value = "";
     transferTo.value = "";
@@ -284,21 +305,38 @@ transferSend.addEventListener("click", () => {
   }
   if (amountValid) {
     let date = getDate();
+    let data = `type=transfer&From=${intro.innerText}&date=${date}&Amount=${
+      transferAmount.value
+    }&To=${transferTo.value}&balance=${
+      Number(balance.innerHTML) - Number(transferAmount.value)
+    }`;
+    // let data = `transferFrom=${intro.innerText}&date=${date}&transferAmount=${
+    //   transferAmount.value
+    // }&transferTo=${transferTo.value}&balance=${
+    //   Number(balance.innerHTML) - Number(transferAmount.value)
+    // }`;
 
-    const transaction = `<div class="transaction">
-              <div class="process">
-                <span class="withdraw">Withdraw</span>
-                <p class="amount">$${transferAmount.value}</p>
-                <p>${transferTo.value}</p>
-                <p>${date}</p>
-              </div>
-              <div class="result">
-                <p>$${currentBalance}</p>
-              </div>`;
+    fetch(localUrl + ":3000/transfer", {
+      credentials: "include",
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: data,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          balance.innerHTML = data.target.balance;
+          makeTransaction(data.target);
+        } else {
+          alert("Sorry, try it again");
+        }
 
-    accountDetail.insertAdjacentHTML("afterbegin", transaction);
+        // currentBalance = Number(currentBalance) + Number(transferAmount.value);
+      });
   }
-  balance.innerText = currentBalance;
+  // balance.innerText = currentBalance;
   transferAmount.value = "";
   transferTo.value = "";
 });
