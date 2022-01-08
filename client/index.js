@@ -117,9 +117,6 @@ const changeCtn = () => {
 
 //balance
 const balance = document.querySelector("#login_page .account .balance span");
-// let currentBalance = balance.innerHTML;
-// let currentBalance = Number(balance.innerHTML);
-// console.log("current Balance", currentBalance);
 const intro = document.querySelector(".user_info span");
 
 const loginAct = () => {
@@ -205,9 +202,11 @@ const prevArrow = document.querySelector("#sec4 .arrow_left");
 const nextArrow = document.querySelector("#sec4 .arrow_right");
 const ReviewCnt = document.querySelector("#sec4 .content_box");
 const ReviewBox = document.querySelector("#sec4 .content_box .review_box");
+
 const Review = document.querySelectorAll(
   "#sec4 .content_box .review_box .review"
 );
+
 const arrow = document.querySelectorAll("#sec4 .arrow");
 let count = 0;
 arrow.forEach((arr) => {
@@ -218,7 +217,7 @@ arrow.forEach((arr) => {
       count > 0 ? count-- : "";
     }
 
-    // btn
+    // btn - disabled
     switch (count) {
       case 0:
         prevArrow.classList.add("off");

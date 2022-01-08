@@ -46,12 +46,12 @@ img {
   cursor: pointer;
 }
 
-.sign_on {
+.sign_on,
+.sign_out {
   width: 120px;
   background-color: rgb(73, 89, 233);
 }
 .sign_out {
-  width: 120px;
   background-color: rgb(219, 82, 28);
 }
 
@@ -68,12 +68,14 @@ img {
   padding: 0 40px;
   line-height: 70px;
 }
+
 #header .logo {
   display: flex;
   font-size: 27px;
   align-items: center;
   font-weight: 700;
 }
+
 #header .logo img {
   width: 70px;
 }
@@ -81,7 +83,7 @@ img {
 #header .btn_box {
   display: flex;
   line-height: 50px;
-  justify-content: space-between;
+  justify-content: right;
   width: 650px;
 }
 
@@ -90,6 +92,7 @@ img {
   justify-content: space-around;
   width: 300px;
   font-weight: 500;
+  font-size: 16px;
 }
 
 #header .btn_box .before_login,
@@ -98,14 +101,19 @@ img {
   justify-content: space-between;
   width: 330px;
 }
+#header .btn_box .after_login {
+  width: 400px;
+}
 
 #header .login_box .user_info {
   position: relative;
   background-color: rgb(248, 223, 219);
   border-radius: 15px;
-  width: 195px;
+  width: 250px;
   text-align: center;
+  font-size: 16px;
 }
+
 #header .login_box .user_info::after {
   position: absolute;
   height: 0px;
@@ -219,6 +227,7 @@ img {
   color: #fff;
   text-shadow: 1px 1px 6px rgba(31, 29, 29, 0.747);
   z-index: 99;
+  font-size: 16px;
   cursor: pointer;
 }
 #section #sec3 .tab_cnt .tab_btns .btn.active {
@@ -281,25 +290,22 @@ img {
 }
 
 /* section4 */
+#section #sec4 .title_box {
+  margin-bottom: 20px;
+}
 #section #sec4 .content_box {
   position: relative;
-  /* border: 3px solid goldenrod; */
   width: 100%;
-  height: 500px;
+  height: 400px;
   overflow: hidden;
 }
 #section #sec4 .content_box .review_box {
   position: absolute;
-  /* border: 2px solid brown; */
-  /* display: flex; */
   transition: 0.6s;
-
-  /* transform: translateY(414px); */
 }
 #section #sec4 .content_box .review_box .review {
   position: relative;
-  height: 500px;
-  /* border: 2px solid goldenrod; */
+  height: 400px;
   display: flex;
   align-items: center;
 }
@@ -312,7 +318,7 @@ img {
 
 #section #sec4 .content_box .review_box .review .user_box {
   position: absolute;
-  top: 70px;
+  top: 30px;
   right: 200px;
   background-color: rgba(190, 226, 190, 0.911);
   width: 140px;
@@ -322,6 +328,9 @@ img {
   padding: 10px;
   border-radius: 10px;
 }
+#section #sec4 .content_box .review_box .review .user_box p {
+  font-size: 16px;
+}
 
 #section #sec4 .content_box .review_box .review .user_box .user_pic {
   display: flex;
@@ -330,7 +339,6 @@ img {
   width: 60px;
   height: 60px;
   background-color: rgba(212, 212, 212, 0.5);
-  /* border: 2px solid red; */
   border-radius: 75px;
   overflow: hidden;
 }
@@ -468,6 +476,7 @@ img {
   display: flex;
   border-bottom: 2px solid rgba(137, 43, 226, 0.144);
 }
+
 #login_page .summary .detail .transaction .process {
   position: relative;
   display: flex;
@@ -476,6 +485,10 @@ img {
   padding: 20px 30px;
   line-height: 40px;
 }
+#login_page .summary .detail .transaction .process p {
+  font-size: 16px;
+}
+
 #login_page .summary .detail .transaction .process .amount {
   font-size: 18px;
   text-indent: 120px;
@@ -516,15 +529,22 @@ img {
   width: 160px;
   text-indent: 15px;
   line-height: 25px;
+  font-size: 15px;
 }
 
-#login_page .summary .action .transfer {
+#login_page .summary .action .transfer,
+#login_page .summary .action .loan {
   background-color: rgba(73, 89, 233, 0.1);
   height: 160px;
   padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+#login_page .summary .action .transfer h3,
+#login_page .summary .action .loan h3 {
+  font-size: 19px;
 }
 
 #login_page .summary .action button {
@@ -537,6 +557,7 @@ img {
   font-weight: 500;
   margin: 5px auto 0;
   cursor: pointer;
+  font-size: 14px;
 }
 #login_page .summary .action .transfer button {
   background-color: rgb(73, 89, 233);
@@ -546,9 +567,6 @@ img {
   background-color: rgba(11, 197, 135, 0.15);
   height: 130px;
   padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
 #login_page .summary .action .loan button {
   background-color: rgb(12, 161, 112);
@@ -579,6 +597,7 @@ img {
 #footer .footer_inner .footer_menu a {
   font-weight: 300;
   padding: 20px;
+  font-size: 16px;
 }
 #footer .open_account {
   margin: 30px auto 0;
@@ -588,4 +607,482 @@ img {
   font-weight: 300;
   color: rgba(255, 255, 255, 0.4);
   font-size: 14px;
+}
+
+@media screen and (min-width: 769px) and (max-width: 1440px) {
+  .open_account,
+  .sign_on,
+  .sign_out {
+    width: 13.1944vw;
+
+    font-size: 1.25vw;
+    line-height: 3.4722vw;
+    padding: 0 1.3889vw;
+    border-radius: 2.0833vw;
+
+    background-color: rgb(11, 197, 135);
+    cursor: pointer;
+  }
+
+  .sign_on,
+  .sign_out {
+    width: 8.3333vw;
+    background-color: rgb(73, 89, 233);
+  }
+  .sign_out {
+    background-color: rgb(219, 82, 28);
+  }
+
+  /* header */
+
+  #header {
+    width: 100%;
+    align-items: center;
+    padding: 0 2.7778vw;
+    line-height: 4.8611vw;
+  }
+
+  #header .logo {
+    font-size: 1.875vw;
+    align-items: center;
+  }
+
+  #header .logo img {
+    width: 4.8611vw;
+  }
+
+  #header .btn_box {
+    line-height: 3.4722vw;
+    width: 45.1389vw;
+  }
+
+  #header .btn_box .menu_box {
+    width: 20.8333vw;
+    font-size: 1.1111vw;
+  }
+
+  #header .btn_box .before_login,
+  #header .btn_box .after_login {
+    width: 22.9167vw;
+  }
+  #header .btn_box .after_login {
+    width: 27.7778vw;
+  }
+
+  #header .login_box .user_info {
+    background-color: rgb(248, 223, 219);
+    border-radius: 1.0417vw;
+    width: 17.3611vw;
+    font-size: 1.1vw;
+  }
+
+  #header .login_box .user_info::after {
+    height: 0vw;
+    width: 0vw;
+    border-top: 0.6944vw solid transparent;
+    border-left: 0.9722vw solid rgb(248, 223, 219);
+    border-bottom: 0.6944vw solid transparent;
+    top: 1.3889vw;
+    right: -0.6944vw;
+  }
+
+  /* section */
+
+  #section {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  #section #sec1,
+  #section #sec2,
+  #section #sec3,
+  #section #sec4 {
+    padding-top: 6.9444vw;
+  }
+  #section #sec1 .txt_box {
+    top: 45%;
+    left: 0;
+    width: 30%;
+  }
+
+  #section #sec1 .txt_box h2 {
+    width: 34.7222vw;
+    line-height: 5.5556vw;
+
+    font-size: 2.5694vw;
+  }
+  #section #sec1 .txt_box p {
+    font-size: 1.9444vw;
+  }
+  #section #sec1 .img_box {
+    width: 70%;
+  }
+
+  #section .title_box {
+    margin-bottom: 3.4722vw;
+
+    width: 100%;
+  }
+  #section .title_box h2 {
+    color: rgb(28, 151, 110);
+    font-size: 2.0833vw;
+    line-height: 2.6389vw;
+  }
+  #section #sec2 .content_box .txt_box {
+    width: 50%;
+    padding: 2.7778vw;
+  }
+
+  #section #sec2 .content_box .txt_box h3 {
+    margin-top: 35%;
+    font-size: 1.9444vw;
+  }
+
+  #section #sec2 .content_box .txt_box p {
+    margin-top: 5%;
+    font-size: 1.1111vw;
+  }
+
+  #section #sec2 .content_box .img_box {
+    width: 50%;
+    padding: 2.0833vw;
+  }
+
+  /* section 3  */
+
+  #section #sec3 .tab_cnt .tab_btns {
+    align-items: center;
+    width: 55%;
+    margin: 0 auto;
+  }
+  #section #sec3 .tab_cnt .tab_btns .btn {
+    border-radius: 1.7361vw;
+    padding: 1vw;
+    text-shadow: 0.0694vw 0.0694vw 0.4167vw rgba(31, 29, 29, 0.747);
+    font-size: 1.1vw;
+    cursor: pointer;
+  }
+  #section #sec3 .tab_cnt .tab_btns .btn.active {
+    box-shadow: 0.2083vw 0.2083vw 0.6944vw gray;
+    margin-top: -1.3889vw;
+    transition: 0.3s;
+  }
+
+  #section #sec3 .tab_cnt .tab_btns [data-tab="1"] {
+    background-color: rgb(134, 85, 212);
+  }
+  #section #sec3 .tab_cnt .tab_btns [data-tab="2"] {
+    background-color: rgba(47, 142, 219, 0.788);
+  }
+  #section #sec3 .tab_cnt .tab_btns [data-tab="3"] {
+    background-color: rgb(8, 153, 134);
+  }
+
+  #section #sec3 .tab_cnt .tab_box {
+    margin-bottom: 20.8333vw;
+  }
+  #section #sec3 .tab_cnt .tab_box .tab {
+    padding: 3.4722vw;
+    margin-top: -2.0833vw;
+    left: 50%;
+    width: 85%;
+    transform: translate(-50%);
+    opacity: 0;
+  }
+
+  #section #sec3 .tab_cnt .tab_box .tab.active {
+    opacity: 1;
+  }
+
+  #section #sec3 .tab_cnt .tab_box .tab.tab01 {
+    background-color: rgba(134, 85, 212, 0.12);
+  }
+  #section #sec3 .tab_cnt .tab_box .tab.tab02 {
+    background-color: rgba(47, 142, 219, 0.12);
+  }
+  #section #sec3 .tab_cnt .tab_box .tab.tab03 {
+    background-color: rgb(8, 153, 134, 0.12);
+  }
+
+  #section #sec3 .tab_cnt .tab_box .tab h3 {
+    font-size: 1.5278vw;
+    margin: 0.6944vw 0;
+  }
+
+  #section #sec3 .tab_cnt .tab_box .tab p {
+    font-size: 1.1111vw;
+    color: rgb(58, 57, 57);
+  }
+
+  /* section4 */
+  #section #sec4 .title_box {
+    margin-bottom: 1.3889vw;
+  }
+  #section #sec4 .content_box {
+    width: 100%;
+    height: 27.7778vw;
+  }
+  #section #sec4 .content_box .review_box {
+    transition: 0.6s;
+  }
+  #section #sec4 .content_box .review_box .review {
+    height: 27.7778vw;
+
+    align-items: center;
+  }
+  #section #sec4 .content_box .review_box .review .txt_box {
+    background-color: rgba(0, 128, 0, 0.055);
+    width: 70%;
+    padding: 2.7778vw;
+    margin: 0 auto;
+  }
+
+  #section #sec4 .content_box .review_box .review .user_box {
+    top: 2.0833vw;
+    right: 13.8889vw;
+    background-color: rgba(190, 226, 190, 0.911);
+    width: 9.7222vw;
+
+    flex-direction: column;
+    align-items: center;
+    padding: 0.6944vw;
+    border-radius: 0.6944vw;
+  }
+  #section #sec4 .content_box .review_box .review .user_box p {
+    font-size: 1.1111vw;
+  }
+
+  #section #sec4 .content_box .review_box .review .user_box .user_pic {
+    align-items: flex-start;
+    width: 4.1667vw;
+    height: 4.1667vw;
+    background-color: rgba(212, 212, 212, 0.5);
+    border-radius: 5.2083vw;
+  }
+
+  #section #sec4 .content_box .arrow_box {
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 5%;
+  }
+  #section #sec4 .content_box .arrow_box .arrow {
+    width: 3.4722vw;
+    height: 3.4722vw;
+
+    background-image: url("https://cdn.pixabay.com/photo/2021/10/09/12/45/play-button-6694069_960_720.png");
+    cursor: pointer;
+  }
+  #section #sec4 .content_box .arrow_box .arrow.arrow_left {
+    transform: rotate(-180deg);
+  }
+
+  #section #sec4 .content_box .review_box .review .txt_box h3 {
+    font-size: 1.8056vw;
+    line-height: 3.6111vw;
+  }
+
+  #section #sec4 .content_box .review_box .review .txt_box p {
+    font-size: 1.1111vw;
+    line-height: 1.5278vw;
+  }
+  #section .modal {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(31, 29, 29, 0.568);
+    align-items: center;
+  }
+
+  #section .modal form {
+    width: 27.7778vw;
+    height: 27.7778vw;
+    border-radius: 1.7361vw;
+    box-shadow: 0.3472vw 0.3472vw 0.6944vw rgba(0, 0, 0, 0.507);
+    flex-direction: column;
+    align-items: center;
+  }
+  #section .modal form .exit {
+    font-size: 1.9444vw;
+    top: 0.6944vw;
+    right: 1.3889vw;
+    cursor: pointer;
+  }
+
+  #section .modal form .logo {
+    align-items: center;
+    margin: 0 auto;
+  }
+
+  #section .modal form .logo p {
+    font-size: 1.9444vw;
+
+    margin-left: 1.3889vw;
+  }
+
+  #section .modal form .logo img {
+    width: 4.1667vw;
+  }
+
+  #section .modal form input {
+    border: none;
+    border-bottom: 0.1042vw solid rgba(102, 101, 101, 0.452);
+    text-indent: 1.0417vw;
+    font-size: 1.25vw;
+    line-height: 1.9444vw;
+    margin: 0.3472vw 0 0.6944vw;
+  }
+
+  #section .modal form .btn {
+    margin-top: 1.3889vw;
+  }
+
+  #section .modal form .open_account {
+    width: 8.3333vw;
+  }
+
+  #login_page {
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 4.8611vw;
+    padding-bottom: 13.8889vw;
+  }
+  #login_page .account {
+    margin: 3.4722vw auto;
+  }
+
+  #login_page .account h2 {
+    font-size: 1.5972vw;
+  }
+  #login_page .account .balance {
+    font-size: 1.5972vw;
+
+    margin-left: 1.3889vw;
+  }
+
+  /* detail */
+  #login_page .summary .detail {
+    width: 97.2222vw;
+  }
+  #login_page .summary .detail .transaction {
+    border-bottom: 0.1389vw solid rgba(137, 43, 226, 0.144);
+  }
+
+  #login_page .summary .detail .transaction .process {
+    width: 80%;
+    padding: 1.3889vw 2.0833vw;
+    line-height: 2.7778vw;
+  }
+  #login_page .summary .detail .transaction .process p {
+    font-size: 1.1111vw;
+  }
+
+  #login_page .summary .detail .transaction .process .amount {
+    font-size: 1.25vw;
+    text-indent: 8.3333vw;
+  }
+
+  #login_page .summary .detail .transaction .process span {
+    background-color: rgb(69, 72, 238);
+    border-radius: 1.0417vw;
+    font-size: 0.9722vw;
+    line-height: 1.5278vw;
+    padding: 0 0.6944vw;
+    top: 50%;
+    left: 1.3889vw;
+    transform: translate(0, -50%);
+  }
+
+  #login_page .summary .detail .transaction .result {
+    font-size: 1.25vw;
+    align-items: center;
+    margin: 0 auto;
+  }
+
+  #login_page .summary .action {
+    width: 13.8889vw;
+  }
+
+  #login_page .summary .action input {
+    border-radius: 0.6944vw;
+    border: none;
+    width: 11.1111vw;
+    text-indent: 1.0417vw;
+    line-height: 1.7361vw;
+    font-size: 1.0417vw;
+  }
+
+  #login_page .summary .action .transfer,
+  #login_page .summary .action .loan {
+    background-color: rgba(73, 89, 233, 0.1);
+    height: 11.1111vw;
+    padding: 1.3889vw;
+    flex-direction: column;
+  }
+
+  #login_page .summary .action .transfer h3,
+  #login_page .summary .action .loan h3 {
+    font-size: 1.3194vw;
+  }
+
+  #login_page .summary .action button {
+    border-radius: 1.0417vw;
+    border: none;
+    width: 5.5556vw;
+    line-height: 1.7361vw;
+
+    letter-spacing: 0.0208vw;
+
+    margin: 0.3472vw auto 0;
+    cursor: pointer;
+    font-size: 0.9722vw;
+  }
+  #login_page .summary .action .transfer button {
+    background-color: rgb(73, 89, 233);
+  }
+
+  #login_page .summary .action .loan {
+    background-color: rgba(11, 197, 135, 0.15);
+    height: 9.0278vw;
+    padding: 1.3889vw;
+  }
+  #login_page .summary .action .loan button {
+    background-color: rgb(12, 161, 112);
+  }
+
+  /* footer */
+
+  #footer {
+    background-color: rgba(42, 68, 54, 0.849);
+    padding: 6.9444vw 0 1.3889vw;
+  }
+
+  #footer .footer_inner {
+    /* padding: 13.8889vw; */
+
+    width: 80%;
+    margin: 0 auto;
+  }
+  #footer .footer_inner h2 {
+    font-size: 2.2222vw;
+  }
+
+  #footer .footer_inner .footer_menu {
+    margin: 6.9444vw auto 1.3889vw;
+  }
+  #footer .footer_inner .footer_menu a {
+    padding: 1.3889vw;
+    font-size: 1.1111vw;
+  }
+  #footer .open_account {
+    margin: 2.0833vw auto 0;
+  }
+
+  #footer .footer_inner p {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.9722vw;
+  }
 }
