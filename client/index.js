@@ -169,7 +169,12 @@ const makeTransaction = (transaction) => {
                           : `>Deposit`
                       }</span>
                       <p class="amount">$${transaction.Amount}</p>
-                      <p>${transaction.To}</p>
+
+                      <p>${
+                        transaction.type == "transfer"
+                          ? transaction.To
+                          : transaction.From
+                      }</p>
                       <p>${transaction.date}</p>
                     </div>
                     <div class="result">
@@ -192,14 +197,10 @@ tabBtn.forEach((btn, i, arr) => {
 
     btn.classList.add("active");
     tabBox[val].classList.add("active");
-    // tabBox[val].style.zIndex = "9";
   });
 });
 
-//   box-shadow: 5px 5px 10px gray;
-
 // slide
-
 const prevArrow = document.querySelector("#sec4 .arrow_left");
 const nextArrow = document.querySelector("#sec4 .arrow_right");
 const ReviewCnt = document.querySelector("#sec4 .content_box");
@@ -260,25 +261,29 @@ requestLoan.addEventListener("click", () => {
   amountCheck(requestAmount.value);
   if (amountValid) {
     let date = getDate();
+    let data = `type=loan&From=The Banking Loan&date=${date}&Amount=${
+      requestAmount.value
+    }&To=${intro.innerText}&balance=${
+      Number(balance.innerHTML) + Number(requestAmount.value)
+    }`;
 
-    const accountDetail = document.querySelector(
-      "#login_page .summary .detail"
-    );
-    currentBalance = currentBalance + Number(requestAmount.value);
-
-    // const transaction = `<div class="transaction">
-    //           <div class="process">
-    //             <span>Deposit</span>
-    //             <p class="amount">$${requestAmount.value}</p>
-    //             <p>Loan from The Banking</p>
-    //             <p>${date}</p>
-    //           </div>
-    //           <div class="result">
-    //             <p>$${currentBalance}</p>
-    //           </div>`;
-
-    // accountDetail.insertAdjacentHTML("afterbegin", transaction);
-    balance.innerText = currentBalance;
+    fetch(localUrl + ":3000/loan", {
+      credentials: "include",
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: data,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          balance.innerHTML = data.target.balance;
+          makeTransaction(data.target);
+        } else {
+          alert("Sorry, try it again");
+        }
+      });
   }
   requestAmount.value = "";
 });
@@ -294,7 +299,6 @@ transferSend.addEventListener("click", () => {
   const transferTo = document.querySelector(
     "#login_page .transfer input[type='text']"
   );
-  // currentBalance = currentBalance - Number(transferAmount.value);
 
   amountCheck(transferAmount.value);
   if (Number(balance.innerHTML) < Number(transferAmount.value)) {
@@ -310,11 +314,6 @@ transferSend.addEventListener("click", () => {
     }&To=${transferTo.value}&balance=${
       Number(balance.innerHTML) - Number(transferAmount.value)
     }`;
-    // let data = `transferFrom=${intro.innerText}&date=${date}&transferAmount=${
-    //   transferAmount.value
-    // }&transferTo=${transferTo.value}&balance=${
-    //   Number(balance.innerHTML) - Number(transferAmount.value)
-    // }`;
 
     fetch(localUrl + ":3000/transfer", {
       credentials: "include",
@@ -332,8 +331,6 @@ transferSend.addEventListener("click", () => {
         } else {
           alert("Sorry, try it again");
         }
-
-        // currentBalance = Number(currentBalance) + Number(transferAmount.value);
       });
   }
   // balance.innerText = currentBalance;

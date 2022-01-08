@@ -88,13 +88,29 @@ app.post("/transfer", (req, res) => {
         .send({ success: true, update: true, target: req.body, update });
     }
   );
+});
 
-  // const user = new User(req.body);
-  // user.save((err, userInfo) => {
-  //   if (err) return res.json({ success: false, err });
-  //   return res.status(200).json({ success: true });
-  // });
-  // console.log("user🎈", user);
+app.post("/loan", (req, res) => {
+  console.log(req.body);
+
+  User.findOneAndUpdate(
+    {
+      username: req.body.To,
+    },
+    {
+      $inc: { balance: req.body.Amount },
+      $push: { transaction: req.body },
+    },
+    // { $push: { transfer: req.body } },
+
+    { new: true },
+    (err, update) => {
+      if (err) return res.status(200).json({ success: false, err });
+      return res
+        .status(200)
+        .send({ success: true, update: true, target: req.body, update });
+    }
+  );
 });
 
 app.listen(3000, (req, res) => {
