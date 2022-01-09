@@ -21,10 +21,8 @@ openModal.forEach((btn) => {
   btn.addEventListener("click", () => {
     let btnType = btn.innerText;
     if (btnType == "Open Account") {
-      console.log("signup");
       signupForm.classList.remove("remove");
     } else {
-      console.log("signon");
       signonForm.classList.remove("remove");
     }
     modal.classList.remove("remove");
@@ -70,7 +68,7 @@ signupForm.addEventListener("submit", function (e) {
   const data = `username=${userData}&password=${userPw}&balance=0`;
   // const data = { username: userData, password: userPw };
 
-  fetch(localUrl + ":3000/register", {
+  fetch("/register", {
     credentials: "include",
     method: "POST",
     headers: {
@@ -126,7 +124,7 @@ const loginAct = () => {
   //login-server
   const data = `username=${userData}&password=${userPw}`;
 
-  fetch(localUrl + ":3000/login", {
+  fetch("/login", {
     credentials: "include",
     method: "POST",
     headers: {
@@ -136,13 +134,14 @@ const loginAct = () => {
   })
     .then((res) => res.json())
     .then((response) => {
-      console.log("Success:", response);
       if (response.loginSuccess) {
         localStorage.setItem("x_auth", response.token);
         balance.innerHTML = response.balance;
-        let allTransaction = response.transaction;
-        for (let log of allTransaction) {
-          makeTransaction(log);
+        if (response.transaction) {
+          let allTransaction = response.transaction;
+          for (let log of allTransaction) {
+            makeTransaction(log);
+          }
         }
       } else {
         alert(`${response.message}`);
@@ -272,7 +271,7 @@ requestLoan.addEventListener("click", () => {
       Number(balance.innerHTML) + Number(requestAmount.value)
     }`;
 
-    fetch(localUrl + ":3000/loan", {
+    fetch("/loan", {
       credentials: "include",
       method: "POST",
       headers: {
@@ -320,7 +319,7 @@ transferSend.addEventListener("click", () => {
       Number(balance.innerHTML) - Number(transferAmount.value)
     }`;
 
-    fetch(localUrl + ":3000/transfer", {
+    fetch("/transfer", {
       credentials: "include",
       method: "POST",
       headers: {

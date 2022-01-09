@@ -5,6 +5,7 @@ const app = express();
 const mongoose = require("mongoose");
 const cors = require("cors");
 const { User } = require("./models/User");
+const path = require("path");
 
 // const port = process.env.PORT || 5000;
 mongoose
@@ -17,7 +18,7 @@ mongoose
 
 app.use(express.json());
 app.use(express.urlencoded());
-
+app.use(express.static(__dirname + "/client"));
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", process.env.localUrl + ":5500");
   res.header("Access-Control-Allow-Credentials", true);
@@ -25,23 +26,20 @@ app.use((req, res, next) => {
 });
 
 app.get("/", (req, res) => {
-  res.send("hello world");
+  res.sendFile(path.join(__dirname + "/index.html"));
+  // res.send("hello world");
 });
 
 app.post("/register", (req, res) => {
-  console.log(req.body);
   const user = new User(req.body);
   user.save((err, userInfo) => {
     if (err) return res.json({ success: false, err });
     return res.status(200).json({ success: true });
   });
-  console.log("user🎈", user);
 });
 
 app.post("/login", (req, res) => {
-  console.log(req.body);
   User.findOne({ username: req.body.username }, (err, user) => {
-    console.log(user);
     if (!user) {
       return res.json({
         loginSuccess: false,
@@ -68,8 +66,6 @@ app.post("/login", (req, res) => {
 });
 
 app.post("/transfer", (req, res) => {
-  console.log(req.body);
-
   User.findOneAndUpdate(
     {
       username: req.body.From,
@@ -78,7 +74,6 @@ app.post("/transfer", (req, res) => {
       $inc: { balance: -req.body.Amount },
       $push: { transaction: req.body },
     },
-    // { $push: { transfer: req.body } },
 
     { new: true },
     (err, update) => {
@@ -91,7 +86,6 @@ app.post("/transfer", (req, res) => {
 });
 
 app.post("/loan", (req, res) => {
-  console.log(req.body);
   User.findOneAndUpdate(
     {
       username: req.body.To,
@@ -110,6 +104,8 @@ app.post("/loan", (req, res) => {
   );
 });
 
-app.listen(3000, (req, res) => {
+const port = process.env.PORT || 3000;
+
+app.listen(port, (req, res) => {
   console.log("server is connected...");
 });
