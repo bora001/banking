@@ -92,7 +92,6 @@ app.post("/transfer", (req, res) => {
 
 app.post("/loan", (req, res) => {
   console.log(req.body);
-
   User.findOneAndUpdate(
     {
       username: req.body.To,
@@ -101,8 +100,6 @@ app.post("/loan", (req, res) => {
       $inc: { balance: req.body.Amount },
       $push: { transaction: req.body },
     },
-    // { $push: { transfer: req.body } },
-
     { new: true },
     (err, update) => {
       if (err) return res.status(200).json({ success: false, err });

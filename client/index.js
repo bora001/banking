@@ -1,5 +1,6 @@
 const nav = document.getElementById("header");
 
+//scroll
 window.addEventListener("scroll", function () {
   let scrollLocation = document.documentElement.scrollTop;
   if (scrollLocation >= nav.offsetHeight) {
@@ -47,6 +48,7 @@ const signupBtn = signupForm.querySelector(".open_account");
 
 signupForm.addEventListener("submit", function (e) {
   e.preventDefault();
+
   let userData = signupForm.querySelector("input[type='text']").value;
   let userPw = signupForm.querySelector(".password1").value;
   let userPwCheck = signupForm.querySelector(".password2").value;
@@ -84,8 +86,6 @@ signupForm.addEventListener("submit", function (e) {
   removeModal();
 });
 
-// //login - test
-
 const loginBtn = document.querySelectorAll(".login_btn");
 const loginBox = document.querySelectorAll(".login_box .login_inner");
 const mainCnt = document.querySelectorAll(".main_cnt");
@@ -95,12 +95,10 @@ const mainCnt = document.querySelectorAll(".main_cnt");
 loginBtn.forEach((btn) => {
   btn.addEventListener("click", () => {
     if (btn.innerText == "Sign On") {
-      console.log("lets login");
       loginAct();
       signupForm.reset();
       signonForm.reset();
     } else {
-      console.log("lets logout");
       changeCtn();
     }
   });
@@ -156,6 +154,7 @@ const loginAct = () => {
     })
     .catch((error) => console.error("Error:", error));
 };
+
 //transaction
 const makeTransaction = (transaction) => {
   let insertTransaction = `<div class="transaction">
@@ -208,6 +207,7 @@ const Review = document.querySelectorAll(
 );
 
 const arrow = document.querySelectorAll("#sec4 .arrow");
+
 let count = 0;
 arrow.forEach((arr) => {
   arr.addEventListener("click", function () {
@@ -230,12 +230,18 @@ arrow.forEach((arr) => {
         prevArrow.classList.remove("off");
         break;
     }
-
-    const y = ReviewCnt.clientHeight;
-    ReviewBox.style.transform = `translateY(-${y * count}px)`;
+    slideCntE();
   });
 });
 
+const slideCntE = () => {
+  const y = ReviewCnt.clientHeight;
+  ReviewBox.style.transform = `translateY(-${y * count}px)`;
+};
+
+window.addEventListener("resize", () => {
+  slideCntE();
+});
 //amountCheck
 let amountValid = true;
 const amountCheck = (value) => {
@@ -332,7 +338,6 @@ transferSend.addEventListener("click", () => {
         }
       });
   }
-  // balance.innerText = currentBalance;
   transferAmount.value = "";
   transferTo.value = "";
 });
