@@ -1,5 +1,6 @@
 # Javascript - banking
 - Open Account(Register), Login, Transfer Money and Loan via MongoDB
+- Deploy Banking Project on Heroku
 
 # Dependencies
 - Bcypt
